@@ -1,0 +1,14 @@
+
+<% @gadgets.each do |gadget| %>
+  <div class="gadget-space">
+    <div name="votes-go-here">Put voting here</div>
+    <div name="put-image-here">Image will go here</div>
+    <div class=""><%= gadget.name %></div>
+    <div class=""><%= gadget.website %></div>
+    <div class=""><%= gadget.description %></div>
+  <div>
+<% end %>
+  
+<br>
+
+<%= link_to 'New Gadget', new_gadget_path %>
