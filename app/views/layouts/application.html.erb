@@ -7,6 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+    <div class="nav">
+      <%= link_to 'Better Mousetrap', gadgets_url, { class: 'block logo'} %>
+      <% if signed_in? %>
+        <%= link_to 'Submit a Gadget', new_gadget_path, { class: 'block nav-btn submit-gadget-btn' } %>
+        <div class="block user-name">Welcome, <%= current_user.fname %> <%= current_user.lname %></div>
+        <div class="block logout-pad"><%= link_to 'Logout', '/logout', { method: :delete, class: 'block nav-btn logout-btn'} %></div>
+      <% else %>
+       <%= link_to 'Login', '/login', {method: :get, class: 'logout-btn'} %>
+     <% end %>
+    </div>
+  </header>
 
 <%= yield %>
 
