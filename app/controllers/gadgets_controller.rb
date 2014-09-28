@@ -6,6 +6,7 @@ class GadgetsController < ApplicationController
   # GET /gadgets.json
   def index
     @gadgets = Gadget.all
+    @today = Date.today
   end
 
   # GET /gadgets/1

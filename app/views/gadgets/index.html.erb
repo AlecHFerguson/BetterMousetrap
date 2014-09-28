@@ -1,4 +1,4 @@
-
+<div class="this-week">This Week <%= "#{@today.strftime('%B')} #{@today.beginning_of_week.day}-#{@today.end_of_week.day} #{@today.year}" %></div>
 <% @gadgets.each do |gadget| %>
   <div class="gadget-space">
     <div name="votes-go-here">Put voting here</div>
@@ -8,7 +8,3 @@
     <div class=""><%= gadget.description %></div>
   <div>
 <% end %>
-  
-<br>
-
-<%= link_to 'New Gadget', new_gadget_path %>
