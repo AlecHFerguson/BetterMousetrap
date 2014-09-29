@@ -1,10 +1,35 @@
 <div class="this-week">This Week <%= "#{@today.strftime('%B')} #{@today.beginning_of_week.day}-#{@today.end_of_week.day} #{@today.year}" %></div>
 <% @gadgets.each do |gadget| %>
   <div class="gadget-space">
-    <div name="votes-go-here">Put voting here</div>
-    <div name="put-image-here">Image will go here</div>
-    <div class=""><%= gadget.name %></div>
-    <div class=""><%= gadget.website %></div>
-    <div class=""><%= gadget.description %></div>
-  <div>
+    <table>
+      <tr>
+        <td class="block votes-go-here">
+          <table>
+            <tr><td><div class="arrow-up" /></td></tr>
+            <tr><td>Votes</tr></td>
+            <tr><td><div class="arrow-down" /></td></tr>
+          </table>
+        </td>
+        <td class="block image-space">Image will<br>go here</td>
+        <td class="info-space">
+          <table class="display-table">
+            <tr class="gadget-title">
+              <td class="gadget-name"><%= gadget.name %></td>
+              <td class="gadget-url"><%= link_to gadget.website, gadget.website %></td>
+            </tr>
+          </table>
+          <table class="display-table">
+            <tr>
+              <td class="description"><%= gadget.description %></td>
+            </tr>
+          </table>
+          
+        </td>
+        <td class="share">
+          <div>Comments</div>
+          <div>Share this</div>
+        </td>
+      </tr>
+    </table>
+  </div>
 <% end %>

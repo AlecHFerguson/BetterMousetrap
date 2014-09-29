@@ -1,3 +1,84 @@
 // Place all the styles related to the Gadgets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$radius: 4px;
+$border: 1px solid;
+
+$total_height: 111px;
+$image_height: 103px;
+$title_height: 17px;
+$description_height: 63px;
+
+$arrow_size: 10px;
+
+.gadget-space {
+  height: $total_height;
+  border: $border;
+  padding: 1px;
+  border-radius: $radius;
+  margin-bottom: 14px;
+}
+
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: $arrow_size solid transparent;
+  border-right: $arrow_size solid transparent;
+  
+  border-bottom: $arrow_size solid #f00;
+}
+
+.arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: $arrow_size solid transparent;
+  border-right: $arrow_size solid transparent;
+  
+  border-top: $arrow_size solid #f00;
+}
+
+.image-space {
+  border: $border;
+  width: 121px;
+  height: $image-height;
+}
+
+.info-space {
+  width: 521px;
+  height: $image_height;
+  border: $border;
+  padding: 0px;
+}
+
+.display-table { 
+  border-spacing: 0px;
+}
+
+.gadget-title {
+  height: $title_height;
+  position: relative;
+  transform: translateY(-50%);
+}
+
+.gadget-name {
+  font-size: 17px;
+  float: left;
+  width: 100px;
+}
+
+.gadget-url {
+  font-size: 14px;
+  padding-left: 10px;
+  width: 131px;
+}
+
+.description {
+  height: $description_height;
+  overflow: hidden;
+  width: 500px;
+}
+
+.share {
+  float: right;
+}

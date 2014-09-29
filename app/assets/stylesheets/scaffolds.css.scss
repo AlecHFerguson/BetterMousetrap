@@ -1,11 +1,9 @@
 body {
   background-color: #fff;
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
 }
 
-p, ol, ul, td {
+p, ol, ul {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
@@ -23,16 +21,11 @@ a {
     
   }
   &:hover {
-    color: #fff;
-    background-color: #000;
+    
   }
 }
 
-div {
-  &.field, &.actions {
-    margin-bottom: 10px;
-  }
-}
+
 
 #notice {
   color: green;
