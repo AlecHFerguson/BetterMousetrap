@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140926042701) do
+ActiveRecord::Schema.define(version: 20140929071420) do
 
   create_table "gadgets", force: true do |t|
     t.string   "name"
@@ -28,6 +28,14 @@ ActiveRecord::Schema.define(version: 20140926042701) do
     t.string   "email",           null: false
     t.string   "password_digest", null: false
     t.string   "remember_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "votes", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "gadget_id",  null: false
+    t.boolean  "upvote",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

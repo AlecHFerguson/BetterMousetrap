@@ -5,9 +5,10 @@
       <tr>
         <td class="block votes-go-here">
           <table>
-            <tr><td><div class="arrow-up" /></td></tr>
-            <tr><td>Votes</tr></td>
-            <tr><td><div class="arrow-down" /></td></tr>
+            <tr><td><%= link_to '', "/gadgets/#{gadget.id}/upvote/", { method: :post, remote: true, class: "arrow-up" } %></td></tr>
+            <tr><td>Upvotes: <%= gadget.upvotes %></td></tr>
+            <tr><td>Downvotes: <%= gadget.downvotes %></td></tr>
+            <tr><td><%= link_to '', "/gadgets/#{gadget.id}/downvote/", { method: :post, remote: true, class: "arrow-down" } %></td></tr>
           </table>
         </td>
         <td class="block image-space">Image will<br>go here</td>

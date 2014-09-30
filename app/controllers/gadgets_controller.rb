@@ -1,6 +1,8 @@
 class GadgetsController < ApplicationController
-  before_action :set_gadget, only: [:show, :edit, :update, :destroy]
-  before_action :require_login, only: [:new, :edit, :create, :destroy]
+  before_action :set_gadget, only: 
+        [:show, :edit, :update, :destroy, :upvote, :downvote]
+  before_action :require_login, only: 
+        [:new, :edit, :create, :destroy, :upvote, :downvote]
 
   # GET /gadgets
   # GET /gadgets.json
@@ -63,6 +65,14 @@ class GadgetsController < ApplicationController
     end
   end
 
+  def upvote
+    set_vote(true)
+  end
+
+  def downvote
+    set_vote(false)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_gadget
@@ -72,5 +82,26 @@ class GadgetsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def gadget_params
       params.require(:gadget).permit(:name, :website, :description, :buy_now_url)
+    end
+
+    def vote_params
+      params.require(:gadget).permit
+    end
+
+    def set_vote(upvote = true)
+
+      in_db = Vote.where( user_id: current_user.id, gadget_id: @gadget.id )
+      if in_db.count == 1
+        in_db[0].upvote = upvote
+        in_db[0].save
+      elsif in_db.count == 0
+        new_vote = Vote.new( user_id: current_user.id, gadget_id: @gadget.id,
+                             upvote: upvote
+                          )
+        new_vote.save
+      else
+        raise
+      end
+      render :nothing => true
     end
 end

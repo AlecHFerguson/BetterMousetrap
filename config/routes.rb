@@ -4,11 +4,11 @@ BetterMousetrap::Application.routes.draw do
   # get "sessions/create"
   # get "sessions/destroy"
   resources :sessions
-  resources :gadgets
 
+  match "/gadgets/:id/upvote", to: 'gadgets#upvote', via: :post
+  match "/gadgets/:id/downvote", to: 'gadgets#downvote', via: :post
+  resources :gadgets
   resources :registers
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
 
   match '/register', to: 'registers#index', via: :get
 
