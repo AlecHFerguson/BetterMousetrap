@@ -10,7 +10,7 @@ $image_height: 103px;
 $title_height: 17px;
 $description_height: 63px;
 
-$arrow_size: 10px;
+$arrow_size: 15px;
 
 .gadget-space {
   height: $total_height;
@@ -20,6 +20,11 @@ $arrow_size: 10px;
   margin-bottom: 14px;
 }
 
+.vote-space {
+  font-size: 13px;
+  height: $image_height;
+}
+
 .arrow-up {
   width: 0; 
   height: 0; 
@@ -27,6 +32,10 @@ $arrow_size: 10px;
   border-right: $arrow_size solid transparent;
   
   border-bottom: $arrow_size solid #f00;
+
+  position: relative;
+  top: -12px;
+  left: 24px;
 }
 
 .arrow-down {
@@ -36,6 +45,14 @@ $arrow_size: 10px;
   border-right: $arrow_size solid transparent;
   
   border-top: $arrow_size solid #f00;
+
+  position: relative;
+  bottom: -30px;
+  left: 24px;
+}
+
+.vote-numbers {
+  
 }
 
 .image-space {

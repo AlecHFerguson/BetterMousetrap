@@ -3,12 +3,15 @@
   <div class="gadget-space">
     <table>
       <tr>
-        <td class="block votes-go-here">
+        <td class="block vote-space">
           <table>
-            <tr><td><%= link_to '', "/gadgets/#{gadget.id}/upvote/", { method: :post, remote: true, class: "arrow-up" } %></td></tr>
-            <tr><td>Upvotes: <%= gadget.upvotes %></td></tr>
-            <tr><td>Downvotes: <%= gadget.downvotes %></td></tr>
-            <tr><td><%= link_to '', "/gadgets/#{gadget.id}/downvote/", { method: :post, remote: true, class: "arrow-down" } %></td></tr>
+            <tr><td><%= link_to '', "/gadgets/#{gadget.id}/upvote/", { method: :post, remote: true, class: "arrow arrow-up" } %></td></tr>
+            <tr class="vote-numbers"><td>+ <%= gadget.upvotes %>, - <%= gadget.downvotes %></td></tr>
+            <% unless current_user.nil? %>
+              <tr class="vote-numbers"><td>Your Vote: <%= gadget.users_vote(current_user) %> </td></tr>
+            <% end %>
+            <!-- <tr><td>Downvotes: <%= gadget.downvotes %></td></tr> -->
+            <tr><td><%= link_to '', "/gadgets/#{gadget.id}/downvote/", { method: :post, remote: true, class: "arrow arrow-down" } %></td></tr>
           </table>
         </td>
         <td class="block image-space">Image will<br>go here</td>

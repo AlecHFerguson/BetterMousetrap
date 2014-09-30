@@ -1,4 +1,5 @@
 class GadgetsController < ApplicationController
+  include SessionsHelper, GadgetsHelper
   before_action :set_gadget, only: 
         [:show, :edit, :update, :destroy, :upvote, :downvote]
   before_action :require_login, only: 
