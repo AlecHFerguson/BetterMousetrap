@@ -1,4 +1,4 @@
-<div class="this-week">This Week <%= "#{@today.strftime('%B')} #{@today.beginning_of_week.day}-#{@today.end_of_week.day} #{@today.year}" %></div>
+<div class="this-week">This Week <%= @this_week %></div>
 <% @gadgets.each do |gadget| %>
   <div class="gadget-space">
     <table>
@@ -10,7 +10,6 @@
             <% unless current_user.nil? %>
               <tr class="vote-numbers"><td>Your Vote: <%= gadget.users_vote(current_user) %> </td></tr>
             <% end %>
-            <!-- <tr><td>Downvotes: <%= gadget.downvotes %></td></tr> -->
             <tr><td><%= link_to '', "/gadgets/#{gadget.id}/downvote/", { method: :post, remote: true, class: "arrow arrow-down" } %></td></tr>
           </table>
         </td>

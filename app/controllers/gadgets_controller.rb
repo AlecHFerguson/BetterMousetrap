@@ -9,7 +9,18 @@ class GadgetsController < ApplicationController
   # GET /gadgets.json
   def index
     @gadgets = Gadget.all
-    @today = Date.today
+    today_date = Date.today
+    beginning_of_week = today_date.beginning_of_week
+    end_of_week = today_date.end_of_week
+    if beginning_of_week.year == end_of_week.year
+      if beginning_of_week.month == end_of_week.month && 
+        @this_week = "#{beginning_of_week.strftime('%B')} #{beginning_of_week.day} - #{end_of_week.day}, #{beginning_of_week.year}"
+      else
+        @this_week = "#{beginning_of_week.strftime('%B')} #{beginning_of_week.day} - #{end_of_week.strftime('%B')} #{end_of_week.day}, #{beginning_of_week.year}"
+      end
+    else
+      @this_week = ""
+    end 
   end
 
   # GET /gadgets/1
