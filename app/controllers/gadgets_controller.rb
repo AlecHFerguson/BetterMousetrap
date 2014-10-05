@@ -93,7 +93,7 @@ class GadgetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gadget_params
-      params.require(:gadget).permit(:name, :website, :description, :buy_now_url)
+      params.require(:gadget).permit(:name, :image, :website, :description, :buy_now_url)
     end
 
     def vote_params

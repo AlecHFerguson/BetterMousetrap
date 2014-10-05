@@ -5,15 +5,16 @@
       <tr>
         <td class="block vote-space">
           <table>
-            <tr><td><%= link_to '', "/gadgets/#{gadget.id}/upvote/", { method: :post, remote: true, class: "arrow arrow-up" } %></td></tr>
+            
+            <tr><td><div id="upvote" class="arrow arrow-up" /></td></tr>
             <tr class="vote-numbers"><td>+ <%= gadget.upvotes %>, - <%= gadget.downvotes %></td></tr>
             <% unless current_user.nil? %>
               <tr class="vote-numbers"><td>Your Vote: <%= gadget.users_vote(current_user) %> </td></tr>
             <% end %>
-            <tr><td><%= link_to '', "/gadgets/#{gadget.id}/downvote/", { method: :post, remote: true, class: "arrow arrow-down" } %></td></tr>
+            <tr><td><%= form_tag "/gadgets/#{gadget.id}/downvote/", { method: :post, remote: true, class: "arrow arrow-down", id: 'downvote' } %></td></tr>
           </table>
         </td>
-        <td class="block image-space">Image will<br>go here</td>
+        <td class="block image-space"><%= image_tag gadget.image, { class: 'block image-space' } %></td>
         <td class="info-space">
           <table class="display-table">
             <tr class="gadget-title">

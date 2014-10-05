@@ -15,3 +15,6 @@
 /log/*.log
 /log/
 /tmp
+
+# Ignore images uploaded
+/public/system/gadgets/images/*
