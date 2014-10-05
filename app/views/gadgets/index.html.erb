@@ -6,12 +6,12 @@
         <td class="block vote-space">
           <table>
             
-            <tr><td><div id="upvote" class="arrow arrow-up" /></td></tr>
-            <tr class="vote-numbers"><td>+ <%= gadget.upvotes %>, - <%= gadget.downvotes %></td></tr>
+            <tr><td><div class="arrow arrow-up" gadget-id="<%= gadget.id %>" /></td></tr>
+            <tr><td class="vote-numbers" gadget-id="<%= gadget.id %>">+ <%= gadget.upvotes %>, - <%= gadget.downvotes %></td></tr>
             <% unless current_user.nil? %>
-              <tr class="vote-numbers"><td>Your Vote: <%= gadget.users_vote(current_user) %> </td></tr>
+              <tr class="vote-numbers"><td>Your Vote: <span id="user-vote-<%= gadget.id %>"><%= gadget.users_vote(current_user) %></span></td></tr>
             <% end %>
-            <tr><td><%= form_tag "/gadgets/#{gadget.id}/downvote/", { method: :post, remote: true, class: "arrow arrow-down", id: 'downvote' } %></td></tr>
+            <tr><td><div class="arrow arrow-down" gadget-id="<%= gadget.id %>" /></td></tr>
           </table>
         </td>
         <td class="block image-space"><%= image_tag gadget.image, { class: 'block image-space' } %></td>

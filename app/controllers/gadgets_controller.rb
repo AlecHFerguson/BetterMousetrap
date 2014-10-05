@@ -112,8 +112,14 @@ class GadgetsController < ApplicationController
                           )
         new_vote.save
       else
-        raise
+        raise "ERROR: expecting 1 or 0 votes in DB. Got #{in_db.count}"
       end
-      render :nothing => true
+
+      ## Construct new stats to show on frontend
+      your_vote = upvote ? 'Up' : 'Down'
+      respond_to do |format|
+        format.json { render json: {yourVote: your_vote, newVotes:
+                 "+ #{@gadget.upvotes}, - #{@gadget.downvotes}" } }
+      end
     end
 end

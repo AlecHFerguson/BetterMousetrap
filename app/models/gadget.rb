@@ -6,7 +6,7 @@ class Gadget < ActiveRecord::Base
   ## TODO: Lots of validation!!
   
   def total_votes
-    @total_votes ||= Vote.where(gadget_id: id)
+    Vote.where(gadget_id: id)
   end
 
   def upvotes
