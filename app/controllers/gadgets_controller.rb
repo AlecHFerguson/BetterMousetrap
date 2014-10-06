@@ -1,5 +1,8 @@
 class GadgetsController < ApplicationController
   include SessionsHelper, GadgetsHelper
+
+  MAX_IMAGE_SIZE = 400
+
   before_action :set_gadget, only: 
         [:show, :edit, :update, :destroy, :upvote, :downvote]
   before_action :require_login, only: 
@@ -26,6 +29,7 @@ class GadgetsController < ApplicationController
   # GET /gadgets/1
   # GET /gadgets/1.json
   def show
+    set_image_dimensions
   end
 
   # GET /gadgets/new
@@ -100,8 +104,37 @@ class GadgetsController < ApplicationController
       params.require(:gadget).permit
     end
 
-    def set_vote(upvote = true)
+    def set_image_dimensions
+      begin
+        geo = Paperclip::Geometry.from_file @gadget.image
+      rescue Paperclip::Errors::NotIdentifiedByImageMagickError
+        @image_height = @image_width = MAX_IMAGE_SIZE
+      end
 
+      begin
+        ratio = geo.height.to_f / geo.width.to_f
+      ## I don't ever expect this to happen!
+      rescue ZeroDivisionError
+        @image_height = geo.height > MAX_IMAGE_SIZE ? 
+                                MAX_IMAGE_SIZE : geo.height
+        @image_width = 0
+      end
+
+      if geo.height > MAX_IMAGE_SIZE || geo.width > MAX_IMAGE_SIZE
+        if geo.height > geo.width
+          @image_height = MAX_IMAGE_SIZE
+          @image_width = MAX_IMAGE_SIZE / ratio
+        else
+          @image_height = MAX_IMAGE_SIZE * ratio
+          @image_width = MAX_IMAGE_SIZE
+        end
+      else
+        @image_height = geo.height
+        @image_width = geo.width
+      end
+    end
+
+    def set_vote(upvote = true)
       in_db = Vote.where( user_id: current_user.id, gadget_id: @gadget.id )
       if in_db.count == 1
         in_db[0].upvote = upvote

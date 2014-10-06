@@ -1,4 +1,19 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <strong>Gadget Details:</strong>
+  <%= @gadget.name %>
+</p>
+
+<table>
+  <tr>
+    <td><%= image_tag @gadget.image, { class: 'image-big',
+                  height: @image_height, width: @image_width } %></td>
+    <td><%= @gadget.description %></td>
+  </tr>
+</table>
+
+
+
 <%= link_to 'Edit', edit_gadget_path(@gadget) %> |
 <%= link_to 'Back', gadgets_path %>
