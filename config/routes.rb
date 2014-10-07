@@ -9,6 +9,7 @@ BetterMousetrap::Application.routes.draw do
   match "/gadgets/:id/downvote", to: 'gadgets#downvote', via: :post
   resources :gadgets
   resources :registers
+  resources :comments
 
   match '/register', to: 'registers#index', via: :get
 

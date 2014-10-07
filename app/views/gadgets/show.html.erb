@@ -13,6 +13,46 @@
   </tr>
 </table>
 
+<% @comments.each do |comment| %>
+  <%= render partial: '/comments/comment_space', locals: {comment: comment} %>
+<% end %>
+
+
+<%= form_for(@new_comment, url: { controller: :comments, action: :create }) do |f| %>
+  <% if @new_comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@new_comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% @new_comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <div class="field">
+      <%= f.label 'Title' %><br>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label 'Comment Text' %><br>
+      <%= f.text_field :text %>
+    </div>
+    <div class="radio-btn">
+      <%= f.label 'Have it?' %><br>
+      <%= f.radio_button :have_it, true %>
+      <%= label_tag :have_it_yes, 'Yes!' %>
+      <%= f.radio_button :have_it, false %>
+      <%= label_tag :have_it_no, 'No~' %>
+    </div>
+    <%= f.hidden_field :gadget_id, value: @gadget.id %>
+
+    <%= f.submit %>
+  </div>
+<% end %>
+
 
 
 <%= link_to 'Edit', edit_gadget_path(@gadget) %> |

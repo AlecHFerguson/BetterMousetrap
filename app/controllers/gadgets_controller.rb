@@ -1,7 +1,7 @@
 class GadgetsController < ApplicationController
   include SessionsHelper, GadgetsHelper
 
-  MAX_IMAGE_SIZE = 400
+  ## TODO: Lots of unit tests!!!!@@@
 
   before_action :set_gadget, only: 
         [:show, :edit, :update, :destroy, :upvote, :downvote]
@@ -30,6 +30,12 @@ class GadgetsController < ApplicationController
   # GET /gadgets/1.json
   def show
     set_image_dimensions
+    @comments = Comment.where(gadget_id: @gadget.id)
+    @new_comment = Comment.new
+  end
+
+  def new_comment
+
   end
 
   # GET /gadgets/new
@@ -104,34 +110,8 @@ class GadgetsController < ApplicationController
       params.require(:gadget).permit
     end
 
-    def set_image_dimensions
-      begin
-        geo = Paperclip::Geometry.from_file @gadget.image
-      rescue Paperclip::Errors::NotIdentifiedByImageMagickError
-        @image_height = @image_width = MAX_IMAGE_SIZE
-      end
-
-      begin
-        ratio = geo.height.to_f / geo.width.to_f
-      ## I don't ever expect this to happen!
-      rescue ZeroDivisionError
-        @image_height = geo.height > MAX_IMAGE_SIZE ? 
-                                MAX_IMAGE_SIZE : geo.height
-        @image_width = 0
-      end
-
-      if geo.height > MAX_IMAGE_SIZE || geo.width > MAX_IMAGE_SIZE
-        if geo.height > geo.width
-          @image_height = MAX_IMAGE_SIZE
-          @image_width = MAX_IMAGE_SIZE / ratio
-        else
-          @image_height = MAX_IMAGE_SIZE * ratio
-          @image_width = MAX_IMAGE_SIZE
-        end
-      else
-        @image_height = geo.height
-        @image_width = geo.width
-      end
+    def comment_params
+      params.require(:comment).permit(:gadget_id, :title, :text, :have_it)
     end
 
     def set_vote(upvote = true)

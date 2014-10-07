@@ -1,0 +1,7 @@
+<%= form_for(comment) do |f| %>
+  <%= comment.user_email %>
+  <%= comment.title %>
+  <%= comment.text %>
+  <p><%= comment.have_it ? 'I have it!' : 'I don\'t have it~~' %></p>
+  
+<% end %>
