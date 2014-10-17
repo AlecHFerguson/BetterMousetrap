@@ -1,5 +1,8 @@
 <% provide(:title, 'Sign in') %>
 <h1>Sign in here</h1>
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
 
 <%= form_for(:session, url: sessions_path) do |f| %>
   <div class="field">

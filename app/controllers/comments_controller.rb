@@ -1,12 +1,14 @@
 class CommentsController < ApplicationController
+  include SessionsHelper
+  before_action do |a|
+    a.require_login('Sorry, you can only create a comment if you\'re logged in')
+  end
   # TODO: Unit tests galore!
 
   def create
     @comment = Comment.new(params_plus_user_id)
-    puts "id = #{comment_params[:gadget_id]}"
     gadget = Gadget.find_by_id(comment_params[:gadget_id])
-    puts "gadget = #{gadget}"
-
+    
     respond_to do |format|
       if @comment.save
         format.html { redirect_to gadget, notice: 'Comment was successfully created.' }
