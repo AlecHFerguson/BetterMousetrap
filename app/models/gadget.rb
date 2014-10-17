@@ -20,7 +20,7 @@ class Gadget < ActiveRecord::Base
   def users_vote(user)
     raw_vote = total_votes.select { |v| v.user_id == user.id }.first
     if raw_vote
-      return raw_vote ? 'Up' : 'Down'
+      return raw_vote.upvote ? 'Up' : 'Down'
     else
       return 'None'
     end

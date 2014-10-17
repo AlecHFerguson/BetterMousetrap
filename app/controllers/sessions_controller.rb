@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 
   def login
     if current_user
-      redirect_to({controller: :dashboard})
+      redirect_to({controller: :gadgets})
     end
   end
 
