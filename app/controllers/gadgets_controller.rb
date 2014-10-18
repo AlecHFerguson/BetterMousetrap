@@ -115,7 +115,7 @@ class GadgetsController < ApplicationController
     end
 
     def set_vote(upvote = true)
-      in_db = Vote.where( user_id: current_user.id, gadget_id: @gadget.id )
+      in_db = @gadget.votes.where( user_id: current_user.id )
       if in_db.count == 1
         in_db[0].upvote = upvote
         in_db[0].save

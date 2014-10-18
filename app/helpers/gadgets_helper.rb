@@ -1,7 +1,7 @@
 module GadgetsHelper
   private
     MAX_IMAGE_SIZE = 400
-  
+    
     def set_image_dimensions
       begin
         geo = Paperclip::Geometry.from_file @gadget.image
@@ -35,4 +35,5 @@ module GadgetsHelper
         @image_height = @image_width = MAX_IMAGE_SIZE
       end
     end
+
 end
