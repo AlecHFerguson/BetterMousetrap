@@ -6,7 +6,7 @@ class GadgetsController < ApplicationController
   before_action :set_gadget, only: 
         [:show, :edit, :update, :destroy, :upvote, :downvote]
   before_action :require_login, only: 
-        [:new, :edit, :create, :destroy, :upvote, :downvote]
+        [:new, :edit, :update, :create, :destroy, :upvote, :downvote]
 
   # GET /gadgets
   # GET /gadgets.json
@@ -22,6 +22,7 @@ class GadgetsController < ApplicationController
         @this_week = "#{beginning_of_week.strftime('%B')} #{beginning_of_week.day} - #{end_of_week.strftime('%B')} #{end_of_week.day}, #{beginning_of_week.year}"
       end
     else
+      # TODO: Populate
       @this_week = ""
     end 
   end
@@ -131,8 +132,8 @@ class GadgetsController < ApplicationController
       ## Construct new stats to show on frontend
       your_vote = upvote ? 'Up' : 'Down'
       respond_to do |format|
-        format.json { render json: {yourVote: your_vote, newVotes:
-                 "+ #{@gadget.upvotes}, - #{@gadget.downvotes}" } }
+        format.json { render json: {yourVote: your_vote, newVotes: 
+                      "+ #{@gadget.upvotes}, - #{@gadget.downvotes}" } }
       end
     end
 end
