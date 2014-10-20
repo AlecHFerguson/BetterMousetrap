@@ -4,7 +4,7 @@ class GadgetsControllerTest < ActionController::TestCase
   include SessionsHelper
   setup do
     @user = users(:one)
-    @gadget = gadgets(:one)
+    @gadget = gadgets(:blank)
     ## Unable to pass :image param because Paperclip blows up.
     # TODO: Test post requests with image params.
     @new_gadget = { name: 'gadget1', website: 'www.gadget1.com', 
