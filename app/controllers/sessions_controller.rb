@@ -1,7 +1,12 @@
 class SessionsController < ApplicationController
+  include SessionsHelper
 
   def index
-    redirect_to :login
+    if current_user
+      redirect_to({controller: :gadgets})
+    else
+      redirect_to :login
+    end
   end
 
   def login

@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class GadgetsControllerTest < ActionController::TestCase
-  include SessionsHelper, GadgetsHelper
+  include SessionsHelper
   setup do
     @user = users(:one)
     @gadget = gadgets(:one)
