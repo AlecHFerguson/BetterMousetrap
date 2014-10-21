@@ -139,4 +139,62 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  test 'Blank email => fails to save' do
+    user = User.new(@user_params.merge({ email: '' }))
+    assert_not user.save
+    assert_equal(user.errors.messages,
+              { email: ["can't be blank", 'Please enter a valid email address'] })
+  end
+
+  test 'Missing email => fails to save' do
+    user = User.new(@user_params.reject {|k,v| k == :email})
+    assert_not user.save
+    assert_equal(user.errors.messages, 
+              { email: ["can't be blank", "Please enter a valid email address"] })
+  end
+
+
+  # :password
+  test 'Mismatched passwords => fails to save' do
+    user = User.new(@user_params.merge({password: 'testing2'}))
+    assert_not user.save
+    assert_equal(user.errors.messages,
+              { password_confirmation: ["doesn't match Password"]})
+  end
+
+  test 'Mismatched confirm password => fails to save' do
+    user = User.new(@user_params.merge({password_confirmation: 'testing2'}))
+    assert_not user.save
+    assert_equal(user.errors.messages,
+              { password_confirmation: ["doesn't match Password"]})
+  end
+
+  test 'Missing :password => fails to save' do
+    user = User.new(@user_params.reject {|k,v| k == :password})
+    assert_not user.save
+    assert_equal(user.errors.messages, { password: 
+        ["can't be blank", 'is too short (minimum is 3 characters)', "can't be blank"]})
+  end
+
+  test 'Missing :password_confirmation => fails to save' do
+    user = User.new(@user_params.reject {|k,v| k == :password_confirmation})
+    assert_not user.save
+    assert_equal(user.errors.messages,
+              { password_confirmation: ["can't be blank"]})
+  end
+
+  test 'Blank :password => fails to save' do
+    user = User.new(@user_params.merge({password: ''}))
+    assert_not user.save
+    assert_equal(user.errors.messages, { password:
+          ["can't be blank", "is too short (minimum is 3 characters)", "can't be blank"]})
+  end
+
+  test 'Blank :password_confirmation => fails to save' do
+    user = User.new(@user_params.merge({password_confirmation: ''}))
+    assert_not user.save
+    assert_equal(user.errors.messages,
+              { password_confirmation: ["doesn't match Password", "can't be blank"]})
+  end
+
 end
