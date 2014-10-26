@@ -7,8 +7,9 @@ class GadgetsControllerTest < ActionController::TestCase
     @gadget = gadgets(:blank)
     ## Unable to pass :image param because Paperclip blows up.
     # TODO: Test post requests with image params.
-    @new_gadget = { name: 'gadget1', website: 'www.gadget1.com', 
-                    description: 'Awesome gadget!',  buy_now_url: 'buynow.gadget1.com'
+    @new_gadget = { name: 'gadget1', website: 'http://www.gadget1.com', 
+                    description: 'You totally need this gadget!',  
+                    buy_now_url: 'http://buynow.gadget1.com'
                   }
   end
 
@@ -126,7 +127,7 @@ class GadgetsControllerTest < ActionController::TestCase
 
   test 'Authed user upvotes existing downvote => vote is changed' do
     sign_in @user
-    vote = votes(:user_1_downvote)
+    vote = votes(:user_3_downvote)
     post :upvote, id: @gadget, format: :json
     assert Vote.where(user_id: @user.id, gadget_id: @gadget.id)[0].upvote
   end
@@ -145,7 +146,7 @@ class GadgetsControllerTest < ActionController::TestCase
   end
 
   test 'Authed user downvotes existing downvote => no changes' do
-    vote = votes(:user_1_downvote)
+    vote = votes(:user_3_downvote)
     sign_in @user
     votes_before = Vote.all
     post :downvote, id: @gadget, format: :json

@@ -17,3 +17,15 @@ two:
   lname: McLastname
   email: second@myurl.com
   password_digest: <%= BCrypt::Password.create('testing1') %>
+three:
+  id: 3
+  fname: Thirdly
+  lname: McRoyals
+  email: third@myurl.com
+  password_digest: <%= BCrypt::Password.create('testing1') %>
+no_votes:
+  id: 4
+  fname: 'Havent'
+  lname: 'Voted'
+  email: 'civicduty@neglected.gov'
+  password_digest: <%= BCrypt::Password.create('testing1') %>
