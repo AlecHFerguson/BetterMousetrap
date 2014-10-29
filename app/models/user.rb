@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_many :comments
+  validates_associated :comments
   has_many :votes
+  validates_associated :votes
 
   # Only permit alphabetic characters
   NAME_REGEX     = /\A[a-zA-Z]+\z/
