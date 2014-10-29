@@ -19,25 +19,27 @@ class CommentTest < ActiveSupport::TestCase
   test 'Non-numeric user_id => fails to save' do
     comment = Comment.new(@comment_params.merge(user_id: '123'))
     assert_not comment.save
-    assert_equal comment.errors.messages, { user_id: ['Must be a number']}
+    assert_equal comment.errors.messages, { user: [NO_USER_FOUND_ERROR] }
   end
 
   test 'Nonexistent user_id => fails to save' do
     comment = Comment.new(@comment_params.merge(user_id: 9999999))
     assert_not comment.save
-    assert_equal comment.errors.messages, { user_id: ['blah']}
+    assert_equal comment.errors.messages, { user: [NO_USER_FOUND_ERROR] }
   end
 
   test 'Blank user_id => fails to save' do
     comment = Comment.new(@comment_params.merge(user_id: nil))
     assert_not comment.save
-    assert_equal comment.errors.messages, { user_id: ["can't be blank", 'is not a number']}
+    assert_equal({ user_id: ["can't be blank", 'is not a number'], user: [NO_USER_FOUND_ERROR] },
+        comment.errors.messages)
   end
 
   test 'Missing user_id => fails to save' do
     comment = Comment.new(@comment_params.reject { |k,v| k == :user_id })
     assert_not comment.save
-    assert_equal comment.errors.messages, { user_id: ["can't be blank", 'is not a number']}
+    assert_equal({ user_id: ["can't be blank", 'is not a number'], user: [NO_USER_FOUND_ERROR] },
+        comment.errors.messages )
   end
 
 
@@ -45,7 +47,7 @@ class CommentTest < ActiveSupport::TestCase
   test 'Non-numeric gadget_id => fails to save' do
     comment = Comment.new(@comment_params.merge(gadget_id: '123'))
     assert_not comment.save
-    assert_equal({gadget_id: [NO_GADGET_FOUND_ERROR]}, comment.errors.messages)
+    assert_equal({gadget: [NO_GADGET_FOUND_ERROR]}, comment.errors.messages)
   end
 
   test 'Nonexistent gadget_id => fails to save' do
@@ -57,14 +59,14 @@ class CommentTest < ActiveSupport::TestCase
   test 'Blank gadget_id => fails to save' do
     comment = Comment.new(@comment_params.merge(gadget_id: nil))
     assert_not comment.save
-    assert_equal({gadget_id: ["can't be blank", 'is not a number'], user: [NO_USER_FOUND_ERROR]},
+    assert_equal({gadget_id: ["can't be blank", 'is not a number'], gadget: [NO_GADGET_FOUND_ERROR]},
       comment.errors.messages)
   end
 
   test 'Missing gadget_id => fails to save' do
     comment = Comment.new(@comment_params.reject { |k,v| k == :gadget_id })
     assert_not comment.save
-    assert_equal({gadget_id: ["can't be blank", 'is not a number'], user: [NO_USER_FOUND_ERROR]},
+    assert_equal({gadget_id: ["can't be blank", 'is not a number'], gadget: [NO_GADGET_FOUND_ERROR]},
       comment.errors.messages)
   end
 

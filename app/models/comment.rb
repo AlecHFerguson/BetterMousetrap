@@ -7,11 +7,11 @@ class Comment < ActiveRecord::Base
 
   belongs_to :user
   # validates_associated :user
-  validates :user, { presence: true, message: NO_USER_FOUND_ERROR }
+  validates :user, presence: { message: NO_USER_FOUND_ERROR }
 
   belongs_to :gadget
   validates_associated :gadget
-  validates :gadget, { presence: true, message: NO_GADGET_FOUND_ERROR }
+  validates :gadget, presence: { message: NO_GADGET_FOUND_ERROR }
   
 
   def user_email
