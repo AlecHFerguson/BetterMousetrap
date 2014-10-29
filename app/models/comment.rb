@@ -6,11 +6,9 @@ class Comment < ActiveRecord::Base
   validates :title, length: { in: 10..70 }
 
   belongs_to :user
-  # validates_associated :user
   validates :user, presence: { message: NO_USER_FOUND_ERROR }
 
   belongs_to :gadget
-  validates_associated :gadget
   validates :gadget, presence: { message: NO_GADGET_FOUND_ERROR }
   
 
