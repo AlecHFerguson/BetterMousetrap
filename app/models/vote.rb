@@ -6,4 +6,6 @@ class Vote < ActiveRecord::Base
   validates :gadget, presence: { message: NO_GADGET_FOUND_ERROR }
   belongs_to :user
   validates :user, presence: { message: NO_USER_FOUND_ERROR }
+
+  validates :upvote, presence: true, { in: [true, false] }
 end
