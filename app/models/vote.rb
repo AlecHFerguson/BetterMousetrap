@@ -7,5 +7,11 @@ class Vote < ActiveRecord::Base
   belongs_to :user
   validates :user, presence: { message: NO_USER_FOUND_ERROR }
 
-  validates :upvote, presence: true, { in: [true, false] }
+  validate :upvote_boolean
+
+  def upvote_boolean
+    unless !!self.upvote == self.upvote
+      errors.add :upvote, 'Must be true or false'
+    end
+  end
 end

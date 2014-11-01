@@ -51,9 +51,15 @@ class VoteTest < ActiveSupport::TestCase
   end
 
   ## :upvote validation
-  test ':upvote is not TrueClass or FalseClass => fails to save' do
-    vote = Vote.new(@vote_params.merge(upvote: :true))
+  test ':upvote is nil => fails to save' do
+    vote = Vote.new(@vote_params.merge(upvote: nil))
     assert_not vote.save
-    assert_equal({upvote: ['Nope']}, vote.errors.messages)
+    assert_equal({upvote: ['Must be true or false']}, vote.errors.messages)
+  end
+
+  test ':upvote is missing => fails to save' do
+    vote = Vote.new(@vote_params.reject {|k,v| k == :upvote })
+    assert_not vote.save
+    assert_equal({upvote: ['Must be true or false']}, vote.errors.messages)
   end
 end
