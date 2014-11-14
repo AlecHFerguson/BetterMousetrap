@@ -15,7 +15,8 @@
         <div class="block user-name">Welcome, <%= current_user.fname %> <%= current_user.lname %></div>
         <div class="block logout-pad"><%= link_to 'Logout', '/logout', { method: :delete, class: 'block nav-btn logout-btn'} %></div>
       <% else %>
-       <%= link_to 'Login', '/login', {method: :get, class: 'logout-btn'} %>
+       <%= link_to 'Login', '/login', {method: :get, class: 'block nav-btn logout-btn'} %>
+       <%= link_to 'Register for free!', '/register', {method: :get, class: 'block nav-btn logout-btn'} %>
      <% end %>
     </div>
   </header>
