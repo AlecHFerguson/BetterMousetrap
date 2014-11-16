@@ -25,6 +25,7 @@ $arrow_size: 10px;
 .vote-space {
   font-size: 13px;
   height: $image_height;
+  width: 100px;
 }
 
 .arrow-up {
@@ -36,7 +37,7 @@ $arrow_size: 10px;
   border-bottom: $arrow_size solid #000000;
 
   position: relative;
-  top: -1px;
+  top: -10px;
   left: 24px;
 }
 
@@ -49,7 +50,7 @@ $arrow_size: 10px;
   border-top: $arrow_size solid #000000;
 
   position: relative;
-  bottom: -22px;
+  bottom: -10px;
   left: 24px;
 }
 
@@ -66,8 +67,8 @@ $arrow_size: 10px;
 .info-space {
   width: 521px;
   height: $image_height;
-  border: $border;
-  padding: 0px;
+  padding-top: 10px;
+  padding-left: 10px;
 }
 
 .display-table { 
@@ -76,20 +77,16 @@ $arrow_size: 10px;
 
 .gadget-title {
   height: $title_height;
-  position: relative;
-  transform: translateY(-50%);
 }
 
 .gadget-name {
   font-size: 17px;
   float: left;
-  width: 100px;
 }
 
 .gadget-url {
   font-size: 14px;
   padding-left: 10px;
-  width: 131px;
 }
 
 .description {
