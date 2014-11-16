@@ -4,6 +4,7 @@
 
 $radius: 4px;
 $border: 1px solid;
+$margin: 15px;
 
 $total_height: 111px;
 $image_height: 103px;
@@ -17,7 +18,8 @@ $arrow_size: 10px;
   border: $border;
   padding: 1px;
   border-radius: $radius;
-  margin-bottom: 14px;
+  margin-bottom: $margin;
+  margin-top: $margin;
 }
 
 .vote-space {
