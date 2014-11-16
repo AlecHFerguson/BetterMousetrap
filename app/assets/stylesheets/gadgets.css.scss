@@ -10,7 +10,7 @@ $image_height: 103px;
 $title_height: 17px;
 $description_height: 63px;
 
-$arrow_size: 15px;
+$arrow_size: 10px;
 
 .gadget-space {
   height: $total_height;
@@ -31,7 +31,7 @@ $arrow_size: 15px;
   border-left: $arrow_size solid transparent;
   border-right: $arrow_size solid transparent;
   
-  border-bottom: $arrow_size solid #f00;
+  border-bottom: $arrow_size solid #000000;
 
   position: relative;
   top: -1px;
@@ -44,7 +44,7 @@ $arrow_size: 15px;
   border-left: $arrow_size solid transparent;
   border-right: $arrow_size solid transparent;
   
-  border-top: $arrow_size solid #f00;
+  border-top: $arrow_size solid #000000;
 
   position: relative;
   bottom: -22px;
