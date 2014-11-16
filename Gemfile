@@ -38,6 +38,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -49,3 +53,5 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+

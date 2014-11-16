@@ -26,8 +26,12 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     arel (4.0.2)
+    autoprefixer-rails (4.0.0.1)
+      execjs
     bcrypt (3.1.7)
     bcrypt-ruby (3.0.0)
+    bootstrap-sass (3.3.1.0)
+      sass (~> 3.2)
     builder (3.1.4)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -118,8 +122,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autoprefixer-rails
   bcrypt
   bcrypt-ruby (= 3.0.0)
+  bootstrap-sass
   jbuilder (~> 1.2)
   jquery-rails
   paperclip
