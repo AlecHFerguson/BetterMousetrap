@@ -26,14 +26,18 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     arel (4.0.2)
-    bcrypt (3.1.7)
+    autoprefixer-rails (4.0.0.1)
+      execjs
+    bcrypt (3.1.9)
     bcrypt-ruby (3.0.0)
+    bootstrap-sass (3.3.1.0)
+      sass (~> 3.2)
     builder (3.1.4)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.4)
       climate_control (>= 0.0.3, < 1.0)
-    coffee-rails (4.0.1)
+    coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
     coffee-script (2.3.0)
@@ -41,7 +45,7 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     erubis (2.7.0)
-    execjs (2.2.1)
+    execjs (2.2.2)
     hike (1.2.3)
     i18n (0.6.11)
     jbuilder (1.5.3)
@@ -86,15 +90,15 @@ GEM
     rdoc (4.1.2)
       json (~> 1.4)
     sass (3.2.19)
-    sass-rails (4.0.3)
+    sass-rails (4.0.4)
       railties (>= 4.0.0, < 5.0)
-      sass (~> 3.2.0)
-      sprockets (~> 2.8, <= 2.11.0)
+      sass (~> 3.2.2)
+      sprockets (~> 2.8, < 2.12)
       sprockets-rails (~> 2.0)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    sprockets (2.11.0)
+    sprockets (2.11.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
@@ -103,16 +107,16 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    sqlite3 (1.3.9)
+    sqlite3 (1.3.10)
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (2.3.0)
+    turbolinks (2.5.2)
       coffee-rails
-    tzinfo (0.3.41)
+    tzinfo (0.3.42)
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
@@ -121,14 +125,16 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autoprefixer-rails
   bcrypt
   bcrypt-ruby (= 3.0.0)
+  bootstrap-sass
   jbuilder (~> 1.2)
   jquery-rails
   paperclip
   parallel_tests
   rails (= 4.0.0)
-  sass-rails (~> 4.0.0)
+  sass-rails (~> 4.0.3)
   sdoc
   sqlite3
   turbolinks

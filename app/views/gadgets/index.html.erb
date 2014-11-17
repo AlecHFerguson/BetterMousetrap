@@ -1,4 +1,7 @@
-<div class="this-week">This Week <%= @this_week %></div>
+<% if signed_in? %>
+        <div>Welcome, <%= current_user.fname %> <%= current_user.lname %></div>
+ <% end %>       
+        <div class="this-week">This Week <%= @this_week %></div>
 <% @gadgets.each do |gadget| %>
   <div class="gadget-space">
     <table>
