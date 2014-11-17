@@ -25,10 +25,15 @@
     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
 	   <% if signed_in? %>
        <%= link_to 'Submit a Gadget', new_gadget_path %>
-       <%= link_to 'Logout', '/logout', { method: :delete} %>     	
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+               <%= current_user.fname %> <b class="caret"></b>
+       </a>
+         <ul class="dropdown-menu">
+               <li><%= link_to 'Logout', '/logout', { method: :delete} %> </li>
+         </ul>
        <% else %>
        <%= link_to 'Login', '/login', {method: :get} %> 
-       <button type="button" class="btn btn-default"><%= link_to 'Register', '/register', {method: :get} %></button>
+       <button type="button" class="btn btn-default navbar-btn"><%= link_to 'Register', '/register', {method: :get} %></button>
         <% end %>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
