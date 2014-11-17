@@ -1,6 +1,8 @@
 class Gadget < ActiveRecord::Base
   has_many :comments
+  validates_associated :comments
   has_many :votes
+  validates_associated :votes
 
   URL_REGEX = /\Ahttp[s]{0,1}:\/\/[a-zA-Z0-9]+\.[a-zA-Z0-9]+\.[a-zA-Z0-9]+/
   URL_MESSAGE = 'Sorry, it appears this URL is not valid. It must contain http(s)://'
